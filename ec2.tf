@@ -11,7 +11,7 @@ terraform {
     bucket  = "aosnote-terraform-state-bucket"
     key     = "build/terraform.tfstate"
     region  = "us-east-1"
-    profile = "terraform-user"
+    profile = "bustopsy"
   }
 }
 
@@ -93,7 +93,7 @@ data "aws_ami" "amazon_linux_2" {
 
 # launch the ec2 instance and install website
 resource "aws_instance" "ec2_instance" {
-  ami                    = data.aws_ami.amazon_linux_2.id
+  ami                    = ami-03a6eaae9938c858c
   instance_type          = "t2.micro"
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
